@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+    <Item name="" identifier="deconstructorcrate" tags="" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true">
+      <Deconstruct time="0.5" />
+
+      <Fabricate time="30" suitablefabricators="fabricator">
+        <RequiredItem identifier="steel" amount="8" />
+      </Fabricate>
+
+      <InventoryIcon texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="0,0,146,83" origin="0.5,0.5" />
+      <Sprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" depth="0.54" sourcerect="0,0,146,83" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="147,0,106,83" origin="0.5,0.5" depth="0.54" maxcondition="99" fadein="false" />
+      <Body width="144" height="80" density="25" />
+      <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
+      </Holdable>
+      <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
+        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <Conditional HasTag="container" targetcontainer="true" />
+          <Conditional HasTag="cargocontainer" targetcontainer="true" />
+        </StatusEffect>
+      </ItemComponent>
+      <ItemContainer capacity="40" slotsperrow="10" maxstacksize="128" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
+        <GuiFrame relativesize="0.3,0.45" anchor="Center" style="ItemUI" />
+        <Containable items="smallitem,mediumitem" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
+        <StatusEffect type="OnPicked" target="This">
+          <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
+        </StatusEffect>
+      </ItemContainer>
+    </Item>
+</Items>
