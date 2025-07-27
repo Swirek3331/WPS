@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <contentpackage name="WPS" modversion="1.0" corepackage="False" gameversion="1.9.8.0">
     <Item file="%ModDir%/Content/Containers.xml" />
+
+    <Text file="%ModDir%/Localization/Polish.xml" />
+    <Text file="%ModDir%/Localization/English.xml" />
 </contentpackage>
