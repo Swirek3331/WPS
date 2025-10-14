@@ -30,7 +30,7 @@
       </ItemContainer>
     </Item>
 
-    <Item name="Refrigerated Crate" identifier="organcrate" tags="crate,refrigerated" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" waterproof="true" fireproof="true" description="[M] REQUIRES NEUROTRAUMA - A place to store your precious transplant-ready organs" hideconditionbar="true">
+    <Item name="" identifier="masacrecrate" tags="crate,refrigerated" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" waterproof="true" fireproof="true" description="[M] REQUIRES NEUROTRAUMA - A place to store your precious transplant-ready organs" hideconditionbar="true">
 
       <Deconstruct time="0.5" />
 
@@ -64,6 +64,7 @@
           <Conditional HasTag="cargocontainer" targetcontainer="true" />
         </StatusEffect>
       </ItemComponent>
+      
       <ItemContainer capacity="56" slotsperrow="8" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
         <GuiFrame relativesize="0.25,0.35" anchor="Center" style="ItemUI" />
         <Containable items="smallitem,organ" excludeditems="toolbox,cargoscooter" />

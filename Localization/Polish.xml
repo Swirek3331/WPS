@@ -4,4 +4,7 @@
     <entityname.deconstructorcrate>WPS</entityname.deconstructorcrate>
     <entitydescription.deconstructorcrate>Wielka Pierdolona Skrzynia. Wodoodporna i może być użyta jak każda inna skrzynia</entitydescription.deconstructorcrate>
 
+    <entityname.masacrecrate>Skrzynia Masakry</entityname.masacrecrate>
+    <entitydescription.masacrecrate>Albo wielka pierdolona lodówa. Może pomieścić więcej niż 4 osoby!</entitydescription.masacrecrate>
+
 </infotexts>
