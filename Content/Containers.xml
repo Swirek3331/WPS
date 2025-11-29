@@ -73,4 +73,58 @@
         </StatusEffect>
       </ItemContainer>
     </Item>
+
+    <Item name="" identifier="romaniancrate" tags="crate" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true" waterproof="true" >
+      <Deconstruct time="0.5" />
+
+      <Fabricate time="30" suitablefabricators="fabricator">
+        <RequiredItem identifier="steel" amount="128" />
+      </Fabricate>
+
+      <InventoryIcon texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="0,0,146,83" origin="0.5,0.5" />
+      <Sprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" depth="0.54" sourcerect="0,0,146,83" origin="0.5,0.5" />
+      <Body width="144" height="80" density="25" />
+      <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
+      </Holdable>
+      <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
+        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <Conditional HasTag="container" targetcontainer="true" />
+          <Conditional HasTag="cargocontainer" targetcontainer="true" />
+        </StatusEffect>
+
+      </ItemComponent>
+
+      <ItemContainer capacity="48" slotsperrow="8" maxsize="32" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
+        <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
+        <!--
+          Dużo rzeczy, czeegoś może nie być. 
+          Może largeitem uwzględni wszystko? (lampki przestały działać)
+          Drabina nie wiem co
+          -->
+        <Containable items="
+            command,navterminal,secondarynavterminal,junctionbox,battery,batterycellrecharger,supercapacitor,chargingdock,searchlight,
+            light,camera,deepdiving,engine,reactor,deconstructor,fabricator,oxygengenerator,oxygentankrefiller,container,cargocontainer,
+            statusmonitor,dischargecoil,periscope,depthchargelauncher,logic,diving,cargoscooter,toolbelt,railgunammo,
+            ammobox,depthchargeammo,holdableladder,placeableladder,chair,pump
+          " excludeditems="crate,tool,weapon" />
+        <StatusEffect type="OnPicked" target="This">
+          <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
+        </StatusEffect>
+
+        <SubContainer capacity="8" maxstacksize="32" depth="0.5">
+        <Containable items="wire,screwdriveritem,crowbar,halligantool" excludeditems="" />
+        <!--Nie miałem innego pomysłu na teksturę-->
+          <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="3" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="4" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="5" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="6" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+          <SlotIcon slotindex="7" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" /> 
+        </SubContainer>
+      </ItemContainer>
+    </Item>
 </Items>
