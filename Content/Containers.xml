@@ -81,8 +81,10 @@
         <RequiredItem identifier="steel" amount="128" />
       </Fabricate>
 
-      <InventoryIcon texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="0,0,146,83" origin="0.5,0.5" />
-      <Sprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" depth="0.54" sourcerect="0,0,146,83" origin="0.5,0.5" />
+      <!--Robię to po raz pierwszy-->
+      <InventoryIcon texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Containers.png" depth="0.54" sourcerect="0,0,97,81" origin="0.5,0.5" />
       <Body width="144" height="80" density="25" />
       <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
         <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
@@ -107,7 +109,7 @@
             command,navterminal,secondarynavterminal,junctionbox,battery,batterycellrecharger,supercapacitor,chargingdock,searchlight,
             light,camera,deepdiving,engine,reactor,deconstructor,fabricator,oxygengenerator,oxygentankrefiller,container,cargocontainer,
             statusmonitor,dischargecoil,periscope,depthchargelauncher,logic,diving,cargoscooter,toolbelt,railgunammo,
-            ammobox,depthchargeammo,holdableladder,placeableladder,chair,pump
+            ammobox,depthchargeammo,holdableladder,placeableladder,chair,pump,weaponholder
           " excludeditems="crate,tool,weapon" />
         <StatusEffect type="OnPicked" target="This">
           <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
@@ -126,5 +128,40 @@
           <SlotIcon slotindex="7" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" /> 
         </SubContainer>
       </ItemContainer>
+    </Item>
+
+      
+    <Item name="" identifier="largecase" category="Equipment" tags="mediumitem,mobilecontainer,tool" cargocontaineridentifier="" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+      <PreferredContainer primary="locker"/>
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab"/>
+      <PreferredContainer secondary="outpostcrewcabinet"/>
+      <Deconstruct time="0.5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="30">
+        <Item identifier="steel" amount="16" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,256,64,64" origin="0.5,0.6" />
+      <Sprite texture="Content/Items/Tools/tools.png" sourcerect="314,1,94,74" origin="0.5,0.5" depth="0.6" />
+      <Body width="90" height="60" density="20" />
+      <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect" DisableWhenRangedWeaponEquipped="true">
+        <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+          <Affliction identifier="blunttrauma" strength="2" />
+          <Affliction identifier="stun" strength="0.6" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character"/>
+            <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500"/>
+            <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <ItemContainer capacity="28" slotsperrow="4" maxstacksize="32" keepopenwhenequipped="true" movableframe="true" QuickUseMovesItemsInside="false">
+        <Containable items="smallitem" />
+      </ItemContainer>
+      <aitarget sightrange="1000" soundrange="1000" fadeouttime="2" />
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <!-- the item used to have the (default) 64 max stack size, i.e. stack size was only limited by the max stack size of the contained items -->
+      <!-- set the stack size back in old saves/subs to prevent items from dropping from containers -->
+      <Upgrade gameversion="1.1.0.0" maxstacksize="64">
+        <ItemContainer maxstacksize="64" />
+      </Upgrade>
     </Item>
 </Items>
