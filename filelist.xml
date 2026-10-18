@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="WPS" modversion="1.4" corepackage="False" steamworkshopid="3535739034" gameversion="1.11.5.0">
+<contentpackage name="WPS" modversion="1.5" corepackage="False" steamworkshopid="3535739034" gameversion="1.13.4.0">
   <Item file="%ModDir%/Content/Containers.xml" />
   <Text file="%ModDir%/Localization/Polish.xml" />
   <Text file="%ModDir%/Localization/English.xml" />

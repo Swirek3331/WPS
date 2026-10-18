@@ -1,167 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Items>
-    <Item name="" identifier="deconstructorcrate" tags="crate" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true" waterproof="true" >
-      <Deconstruct time="0.5" />
-
-      <Fabricate time="30" suitablefabricators="fabricator">
-        <RequiredItem identifier="steel" amount="32" />
-      </Fabricate>
-
-      <InventoryIcon texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="0,0,146,83" origin="0.5,0.5" />
-      <Sprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" depth="0.54" sourcerect="0,0,146,83" origin="0.5,0.5" />
-      <Body width="144" height="80" density="25" />
-      <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
-      </Holdable>
-      <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
-          <Conditional IsContained="false" />
-          <Conditional HasTag="container" targetcontainer="true" />
-          <Conditional HasTag="cargocontainer" targetcontainer="true" />
-        </StatusEffect>
-      </ItemComponent>
-      <!--Z nieznanych mi powodów gra nie chce współpracować na wyższych wartościach, to znaczy UI się rozjeżdża-->
-      <ItemContainer capacity="56" slotsperrow="8" maxsize="32" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
-        <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
-        <Containable items="smallitem,mediumitem" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
-        <StatusEffect type="OnPicked" target="This">
-          <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
-        </StatusEffect>
-      </ItemContainer>
-    </Item>
-
-    <Item name="" identifier="masacrecrate" tags="crate,refrigerated" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" waterproof="true" fireproof="true" description="[M] REQUIRES NEUROTRAUMA - A place to store your precious transplant-ready organs" hideconditionbar="true">
-
-      <Deconstruct time="0.5" />
-
-      <Fabricate suitablefabricators="fabricator" requiredtime="30">
-        <Item identifier="steel" amount="32"/>
-        <Item identifier="potassium" amount="4"/>
-        <Item identifier="phosphorus" amount="2" />
-      </Fabricate>
-
-      <Fabricate suitablefabricators="fabricator" requiredtime="15">
-        <Item identifier="deconstructorcrate" />
-        <Item identifier="potassium" amount="4"/>
-        <Item identifier="phosphorus" amount="2" />
-      </Fabricate>
-
-
-      <InventoryIcon texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" sourcerect="254,1,146,83" origin="0.5,0.5" />
-      <Sprite texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" depth="0.54" sourcerect="254,1,146,83" origin="0.5,0.5" />
-      <BrokenSprite texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" sourcerect="401,1,106,83" origin="0.5,0.5" depth="0.54" maxcondition="99" fadein="false" />
-      <Body width="144" height="80" density="25" />
-      <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
-        <!-- damage the crate to display the broken sprite and turn the ItemComponent on when it is being held -->
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
-      </Holdable>
-      <!-- ItemComponent used to not have to resort to constantly running "Always" StatusEffects when no one is interacting with the crate -->
-      <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
-        <!-- repair the item to display the original sprite again and turn the ItemComponent off if it is either not contained or it is stored in another item with the tag "container" like the crate shelfs -->
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
-          <Conditional IsContained="false" />
-          <Conditional HasTag="container" targetcontainer="true" />
-          <Conditional HasTag="cargocontainer" targetcontainer="true" />
-        </StatusEffect>
-      </ItemComponent>
-      
-      <ItemContainer capacity="56" slotsperrow="8" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
-        <GuiFrame relativesize="0.25,0.35" anchor="Center" style="ItemUI" />
-        <Containable items="smallitem,organ" excludeditems="toolbox,cargoscooter" />
-        <StatusEffect type="OnPicked" target="This">
-          <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
-        </StatusEffect>
-      </ItemContainer>
-    </Item>
-
-    <Item name="" identifier="romaniancrate" tags="crate" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true" waterproof="true" >
-      <Deconstruct time="0.5" />
-
-      <Fabricate time="30" suitablefabricators="fabricator">
-        <RequiredItem identifier="steel" amount="128" />
-      </Fabricate>
-
-      <!--Robię to po raz pierwszy-->
-      <InventoryIcon texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
-      <BrokenSprite texture="%ModDir%/Content/Containers.png" depth="0.54" sourcerect="0,0,97,81" origin="0.5,0.5" />
-      <Body width="144" height="80" density="25" />
-      <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
-      </Holdable>
-      <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
-        <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
-          <Conditional IsContained="false" />
-          <Conditional HasTag="container" targetcontainer="true" />
-          <Conditional HasTag="cargocontainer" targetcontainer="true" />
-        </StatusEffect>
-
-      </ItemComponent>
-
-      <ItemContainer capacity="48" slotsperrow="8" maxsize="32" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
-        <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
+  <Item name="" identifier="deconstructorcrate" tags="crate" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true" waterproof="true">
+    <Deconstruct time="0.5" />
+    <Fabricate time="30" suitablefabricators="fabricator">
+      <RequiredItem identifier="steel" amount="32" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" sourcerect="0,0,146,83" origin="0.5,0.5" />
+    <Sprite texture="%ModDir:3239164008%/Content/Items/IC-ItemsAtlas.png" depth="0.54" sourcerect="0,0,146,83" origin="0.5,0.5" />
+    <Body width="144" height="80" density="25" />
+    <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
+    </Holdable>
+    <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
+        <Conditional IsContained="false" />
+        <Conditional HasTag="container" targetcontainer="true" />
+        <Conditional HasTag="cargocontainer" targetcontainer="true" />
+      </StatusEffect>
+    </ItemComponent>
+    <!--Z nieznanych mi powodów gra nie chce współpracować na wyższych wartościach, to znaczy UI się rozjeżdża-->
+    <ItemContainer capacity="56" slotsperrow="8" maxsize="32" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
+      <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
+      <StatusEffect type="OnPicked" target="This">
+        <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="masacrecrate" tags="crate,refrigerated" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" waterproof="true" fireproof="true" description="[M] REQUIRES NEUROTRAUMA - A place to store your precious transplant-ready organs" hideconditionbar="true">
+    <Deconstruct time="0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <Item identifier="steel" amount="32" />
+      <Item identifier="potassium" amount="4" />
+      <Item identifier="phosphorus" amount="2" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15">
+      <Item identifier="deconstructorcrate" />
+      <Item identifier="potassium" amount="4" />
+      <Item identifier="phosphorus" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" sourcerect="254,1,146,83" origin="0.5,0.5" />
+    <Sprite texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" depth="0.54" sourcerect="254,1,146,83" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir:3337851889%/Content/Items/ICMCCP-ItemsAtlas.png" sourcerect="401,1,106,83" origin="0.5,0.5" depth="0.54" maxcondition="99" fadein="false" />
+    <Body width="144" height="80" density="25" />
+    <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
+      <!-- damage the crate to display the broken sprite and turn the ItemComponent on when it is being held -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
+    </Holdable>
+    <!-- ItemComponent used to not have to resort to constantly running "Always" StatusEffects when no one is interacting with the crate -->
+    <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
+      <!-- repair the item to display the original sprite again and turn the ItemComponent off if it is either not contained or it is stored in another item with the tag "container" like the crate shelfs -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
+        <Conditional IsContained="false" />
+        <Conditional HasTag="container" targetcontainer="true" />
+        <Conditional HasTag="cargocontainer" targetcontainer="true" />
+      </StatusEffect>
+    </ItemComponent>
+    <ItemContainer capacity="56" slotsperrow="8" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
+      <GuiFrame relativesize="0.25,0.35" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,organ" excludeditems="toolbox,cargoscooter" />
+      <StatusEffect type="OnPicked" target="This">
+        <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="romaniancrate" tags="crate" scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_crate" hideconditionbar="true" waterproof="true">
+    <Deconstruct time="0.5" />
+    <Fabricate time="30" suitablefabricators="fabricator">
+      <RequiredItem identifier="steel" amount="128" />
+    </Fabricate>
+    <!--Robię to po raz pierwszy-->
+    <InventoryIcon texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Containers.png" sourcerect="0,0,144,81" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/Content/Containers.png" depth="0.54" sourcerect="0,0,97,81" origin="0.5,0.5" />
+    <Body width="144" height="80" density="25" />
+    <Holdable slots="RightHand+LeftHand" holdangle="5" holdpos="90,-110" handle1="-5,0" handle2="-5,10" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" IsActive="true" condition="99" setvalue="true" />
+    </Holdable>
+    <ItemComponent IsActive="false" canbeselected="false" canbepicked="false" allowingameediting="false">
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="ItemComponent" condition="100" IsActive="false" setvalue="true">
+        <Conditional IsContained="false" />
+        <Conditional HasTag="container" targetcontainer="true" />
+        <Conditional HasTag="cargocontainer" targetcontainer="true" />
+      </StatusEffect>
+    </ItemComponent>
+    <ItemContainer capacity="48" slotsperrow="8" maxsize="32" canbeselected="true" selectkey="Action" hideitems="true" keepopenwhenequipped="true" movableframe="true" msg="itemmsginteractuse">
+      <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
         <!--
           Dużo rzeczy, czeegoś może nie być. 
           Może largeitem uwzględni wszystko? (lampki przestały działać)
           Drabina nie wiem co
-          -->
+        -->
         <Containable items="
             command,navterminal,secondarynavterminal,junctionbox,battery,batterycellrecharger,supercapacitor,chargingdock,searchlight,
             light,camera,deepdiving,engine,reactor,deconstructor,fabricator,oxygengenerator,oxygentankrefiller,container,cargocontainer,
             statusmonitor,dischargecoil,periscope,depthchargelauncher,logic,diving,cargoscooter,toolbelt,railgunammo,
-            ammobox,depthchargeammo,holdableladder,placeableladder,chair,pump,weaponholder
-          " excludeditems="crate,tool,weapon" />
+            ammobox,depthchargeammo,holdableladder,placeableladder,chair,pump,weaponholder"
+          excludeditems="crate,tool,weapon"
+        />
         <StatusEffect type="OnPicked" target="This">
-          <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
-        </StatusEffect>
-
-        <SubContainer capacity="8" maxstacksize="32" depth="0.5">
+        <Sound file="%ModDir:3239164008%/Content/Items/crate_open1.ogg" range="300" volume="2.0" loop="false" />
+      </StatusEffect>
+      <SubContainer capacity="8" maxstacksize="32" depth="0.5">
         <Containable items="wire,screwdriveritem,crowbar,halligantool" excludeditems="" />
         <!--Nie miałem innego pomysłu na teksturę-->
-          <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="3" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="4" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="5" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="6" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
-          <SlotIcon slotindex="7" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" /> 
-        </SubContainer>
-      </ItemContainer>
-    </Item>
-
-      
-    <Item name="" identifier="largecase" category="Equipment" tags="mediumitem,mobilecontainer,tool" cargocontaineridentifier="" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
-      <PreferredContainer primary="locker"/>
-      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab"/>
-      <PreferredContainer secondary="outpostcrewcabinet"/>
-      <Deconstruct time="0.5" />
-      <Fabricate suitablefabricators="fabricator" requiredtime="30">
-        <Item identifier="steel" amount="16" />
-      </Fabricate>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,256,64,64" origin="0.5,0.6" />
-      <Sprite texture="Content/Items/Tools/tools.png" sourcerect="314,1,94,74" origin="0.5,0.5" depth="0.6" />
-      <Body width="90" height="60" density="20" />
-      <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect" DisableWhenRangedWeaponEquipped="true">
-        <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
-          <Affliction identifier="blunttrauma" strength="2" />
-          <Affliction identifier="stun" strength="0.6" />
-          <StatusEffect type="OnUse" target="UseTarget">
-            <Conditional entitytype="eq Character"/>
-            <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500"/>
-            <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
-          </StatusEffect>
-        </Attack>
-      </MeleeWeapon>
-      <ItemContainer capacity="28" slotsperrow="4" maxstacksize="32" keepopenwhenequipped="true" movableframe="true" QuickUseMovesItemsInside="false">
-        <Containable items="smallitem" />
-      </ItemContainer>
-      <aitarget sightrange="1000" soundrange="1000" fadeouttime="2" />
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
-      <!-- the item used to have the (default) 64 max stack size, i.e. stack size was only limited by the max stack size of the contained items -->
-      <!-- set the stack size back in old saves/subs to prevent items from dropping from containers -->
-      <Upgrade gameversion="1.1.0.0" maxstacksize="64">
-        <ItemContainer maxstacksize="64" />
-      </Upgrade>
-    </Item>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="3" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="4" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="5" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="6" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="7" texture="Content/UI/StatusMonitorUI.png" sourcerect="383,448,64,64" origin="0.5,0.5" />
+      </SubContainer>
+    </ItemContainer>
+  </Item>
 </Items>
